@@ -1,13 +1,15 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./assets/icons8-download-64.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/icons8-download-48.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <title>File uploader</title>
 <body>
   <form id="form" enctype="multipart/form-data">      
     <label for="file-upload" class="custom-file-upload">
-      <i class="fa fa-cloud-upload"></i> Upload File
+      
+      <img src="./assets/icons8-download-48.png" alt="" width="30px"> Upload File
   </label>
         <input type="file" name="files" id="file-upload" multiple accept="image/jpeg,image/png" class="File-input">
         <ul>
@@ -15,7 +17,7 @@
         </ul>   
   </form>
 
-  
+
   <script src="./index.js"></script>
 </body>
 </html>
