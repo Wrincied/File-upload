@@ -9,10 +9,12 @@ fInput.addEventListener('change', (e) => {
 
     fList.forEach((f, index) => {
         let li = ul.appendChild(document.createElement('li'));
+        li.classList.add('form-list')
         li.dataset.index = index;
         let img = li.appendChild(document.createElement('img'));
         img.src = URL.createObjectURL(f);
         let p = li.appendChild(document.createElement('p'));
+        p.classList.add('FileName')
         let btn = li.appendChild(document.createElement('button'));
         btn.innerText = 'Delete';
         btn.classList.add('btn');
@@ -25,7 +27,6 @@ fInput.addEventListener('change', (e) => {
             URL.revokeObjectURL(f);
             const elem = document.querySelector(`[data-index='${index}']`);
             elem.remove();
-
         });
         p.innerText = f.name;
     });
@@ -37,11 +38,13 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const files = fList;
     const formData = new FormData();
+    const li = document.querySelector('li');
     for (let i = 0; i < files.length; i++) {
         formData.append('files', files[i])
+            li.classList.add('submit');      
     }
 
-    formData.append('desc', 'igame Added');
+    formData.append('desc', 'The file has been uploaded');
 
     console.log(formData.get('desc'))
 
@@ -51,4 +54,5 @@ form.addEventListener('submit', (e) => {
       }).then((response) => {
         console.log(response)
       })
+
 });

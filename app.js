@@ -3,12 +3,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const multer = require('multer');
 const mime = require('mime-types');
-const port = 3000;
+const port = 5000;
 
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// for parsing multipart/form-data
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -26,6 +25,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/filelist',(req,res)=>{
+    res.sendFile(__dirname + '/filelist.html');
+})
+
+
 app.post('/send-form', upload.array('files', 10), (req, res) => {
     console.log('-----', req.body.desc );
 //   console.log('---- ', req.files );
@@ -34,4 +38,5 @@ app.post('/send-form', upload.array('files', 10), (req, res) => {
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
+  console.log('Success')
 })

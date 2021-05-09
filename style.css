@@ -20,7 +20,7 @@ img {
   ul{
     margin-top: 15px;
   }
-  li {
+  .form-list {
     border: 2px solid #d9e2ef;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -30,12 +30,17 @@ img {
     display: none;
 }
 .custom-file-upload {
-    border: 2px solid #161c2d;
+    border: 2px solid #467fd0;
     display: inline-block;
     padding: 9px 20px;
     cursor: pointer;
-    color: #161c2d;
+    color: #467fd0;
     font-weight: 600;
+}
+.custom-file-upload:hover{
+    background-color:#467fd0;
+    color: white;
+    transition: all 500ms ease;
 }
 
   .btn{
@@ -45,10 +50,18 @@ img {
       padding: 10px 30px;
       font-size: 15px;
       font-weight: 600;
+      cursor: pointer;
       }
+      .btn:hover{
+          background-color: #df4759;
+          color: white;
+          transition: all 500ms ease;
+      }
+
       .FileName{
           color:#161c2d;
           text-transform: lowercase;
+          padding: 15px 0;
       }
       .subbtn{
           margin-left: 15px;
@@ -60,4 +73,28 @@ img {
           background-color: transparent;
           font-family: 'Poppins', sans-serif;
           cursor: pointer;
+      }
+      .submit{
+        border: 2px solid #42ba96;
+      }
+      .subbtn:hover{
+        background-color: #42ba96;
+        color: white;
+        transition: all 500ms ease;
+      }
+      .delbutton{
+          margin-left: 15px;
+          border: 2px solid #df4759;
+          color:#df4759;
+          padding: 10px 30px;
+          font-size: 15px;
+          font-weight: 600;
+          background-color: transparent;
+          font-family: 'Poppins', sans-serif;
+          cursor: pointer;
+      }
+      .delbutton:hover{
+          background-color: #df4759;
+          color: white;
+          transition: all 500ms ease;
       }
