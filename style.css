@@ -70,7 +70,7 @@ img {
       .subbtn{
           margin-left: 15px;
           border: 2px solid #42ba96;
-          padding: 7px 30px;
+          padding: 7px 25px;
           font-size: 15px;
           font-weight: 600;
           color: #42ba96;
@@ -113,5 +113,28 @@ img {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+}
+@media (max-width:300px) {
+    .btn {
+        background-color: transparent;
+        border: 2px solid #df4759;
+        color: #df4759;
+        padding: 10px 30px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .subbtn{
+    margin-left:0;
+    margin-top: 7px;
+    border: 2px solid #42ba96;
+    padding: 7px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #42ba96;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
     }
 }
