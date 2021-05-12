@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./assets/icons8-download-64(pink).png" type="img/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   </head>
   <title>File uploader</title>
 <body>
@@ -13,9 +14,9 @@
   </label>
         <input type="file" name="files" id="file-upload" multiple accept="image/jpeg,image/png" multiple="multiple" class="File-input">
         <ul>
-
+          <div id="container"> </div>
         </ul>  
-      <button class="delbutton" id="deletebtn">Delete</button>
+      <button class="delbutton" id="deletebtn" type="button">Delete all </button>
       </form>
 
 
