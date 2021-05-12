@@ -1,6 +1,7 @@
 const form = document.querySelector('#form');
 const fInput = document.getElementById('file-upload');
 const ul = document.querySelector('ul');
+let deletebtn = document.getElementById('getElementById');
 let fList = undefined;
 
 fInput.addEventListener('change', (e) => {
@@ -15,24 +16,33 @@ fInput.addEventListener('change', (e) => {
         img.src = URL.createObjectURL(f);
         let p = li.appendChild(document.createElement('p'));
         p.classList.add('FileName')
-        let btn = li.appendChild(document.createElement('button'));
-        btn.innerText = 'Delete';
-        btn.classList.add('btn');
+        let del = li.appendChild(document.createElement('button'));
+        del.innerText = 'Delete';
+        del.classList.add('btn');
         let sub = li.appendChild(document.createElement('button'));
         sub.innerText = 'Submit';
         sub.classList.add('subbtn');
 
-        btn.addEventListener('click', () => {
+        del.addEventListener('click', () => {
             fList.splice(index, 1);
             URL.revokeObjectURL(f);
             const elem = document.querySelector(`[data-index='${index}']`);
             elem.remove();
+            console.log('The file was successful delete');
         });
         p.innerText = f.name;
     });
     fInput.value = null;
 });
+    deletebtn.addEventListener('click', () => {
+        fList.splice(index, 1);
+        URL.revokeObjectURL(f);
+        const elem = document.querySelector(`[data-index='${index}']`);
+        elem.remove();
+        console.log('The file was successful delete');
+    });
 
+    
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -41,10 +51,10 @@ form.addEventListener('submit', (e) => {
     const li = document.querySelector('li');
     for (let i = 0; i < files.length; i++) {
         formData.append('files', files[i])
-            li.classList.add('submit');      
-    }
+            formData.append('desc', 'The file has been uploaded');
+        }
 
-    formData.append('desc', 'The file has been uploaded');
+    
 
     console.log(formData.get('desc'))
 

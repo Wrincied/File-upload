@@ -87,7 +87,7 @@ img {
         transition: all 500ms ease;
       }
       .delbutton{
-          margin-left: 15px;
+         margin-left: 15px;
           border: 2px solid #df4759;
           color:#df4759;
           padding: 10px 30px;
@@ -113,6 +113,22 @@ img {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .delbutton{
+        margin:0;
+        border: 2px solid #df4759;
+        color:#df4759;
+        padding: 10px 30px;
+        font-size: 15px;
+        font-weight: 600;
+        background-color: transparent;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+    }
+    .delbutton:hover{
+        background-color: #df4759;
+        color: white;
+        transition: all 500ms ease;
     }
 }
 @media (max-width:300px) {
