@@ -87,11 +87,10 @@ img {
         transition: all 500ms ease;
       }
       .delbutton{
-         margin-left: 15px;
           border: 2px solid #df4759;
           color:#df4759;
-          padding: 10px 30px;
-          font-size: 15px;
+          padding: 10px 61px;
+          font-size: 16px;
           font-weight: 600;
           background-color: transparent;
           font-family: 'Poppins', sans-serif;

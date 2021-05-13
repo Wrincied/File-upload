@@ -1,40 +1,9 @@
 const form = document.querySelector('#form');
 const fInput = document.getElementById('file-upload');
 const ul = document.querySelector('ul');
-let delbtn = document.getElementById('deletebtn');
+const dragDrop =('drag-drop')
 let fList = undefined;
-let sub = document.querySelector('subbtn');
 
-var bar = new ProgressBar.Line(container, {
-    strokeWidth: 4,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    svgStyle: {width: '100%', height: '100%'},
-    text: {
-      style: {
-        // Text color.
-        // Default: same as stroke color (options.color)
-        color: '#999',
-        position: 'absolute',
-        right: '0',
-        top: '30px',
-        padding: 0,
-        margin: 0,
-        transform: null
-      },
-      autoStyleContainer: false
-    },
-    from: {color: '#FFEA82'},
-    to: {color: '#ED6A5A'},
-    step: (state, bar) => {
-      bar.setText(Math.round(bar.value() * 100) + ' %');
-    }
-  });
-  
-  bar.animate(1.0);  // Number from 0.0 to 1.0
 
 fInput.addEventListener('change', (e) => {
     ul.innerHTML = '';
@@ -59,17 +28,14 @@ fInput.addEventListener('change', (e) => {
 
 
         deletebtn.addEventListener('click', () => {
-            fList.splice(index, 1);
+            fList.splice(index, 0);
             URL.revokeObjectURL(f);
             const elem = document.querySelector(`[data-index='${index}']`);
             elem.remove();
             console.log('The file was successful delete');
-
-            
-            
+            // document.location.reload()
         });
         p.innerText = f.name;
-        // window.setTimeout(window.location.reload(), 5000)
         
 
         del.addEventListener('click', () => {
@@ -109,3 +75,37 @@ fInput.addEventListener('change', (e) => {
                                 console.log(response)
                               })
                         });
+ // `files` is an Array!
+
+
+ // You can pass in a DOM node or a selector string!
+ dragDrop('#dropTarget', (files, pos, fileList, directories) => {
+   console.log('Here are the dropped files', files)
+   console.log('Dropped at coordinates', pos.x, pos.y)
+   console.log('Here is the raw FileList object if you need it:', fileList)
+   console.log('Here is the list of directories:', directories)
+ 
+   // `files` is an Array!
+   files.forEach(file => {
+     console.log(file.name)
+     console.log(file.size)
+     console.log(file.type)
+     console.log(file.lastModifiedDate)
+     console.log(file.fullPath) // not real full path due to browser security restrictions
+     console.log(file.path) // in Electron, this contains the actual full path
+ 
+     // convert the file to a Buffer that we can use!
+     const reader = new FileReader()
+     reader.addEventListener('load', e => {
+       // e.target.result is an ArrayBuffer
+       const arr = new Uint8Array(e.target.result)
+       const buffer = new Buffer(arr)
+ 
+       // do something with the buffer!
+     })
+     reader.addEventListener('error', err => {
+       console.error('FileReader error' + err)
+     })
+     reader.readAsArrayBuffer(file)
+   })
+ })
