@@ -33,7 +33,7 @@ fInput.addEventListener('change', (e) => {
             const elem = document.querySelector(`[data-index='${index}']`);
             elem.remove();
             console.log('The file was successful delete');
-            // document.location.reload()
+            document.location.reload()
         });
         p.innerText = f.name;
         
@@ -48,7 +48,6 @@ fInput.addEventListener('change', (e) => {
         });
         p.innerText = f.name;
         
-    // fInput.value = null;
     })
 
 }); 
@@ -56,56 +55,22 @@ fInput.addEventListener('change', (e) => {
 
 
 
-                        form.addEventListener('submit', (e) => {
-                            e.preventDefault();
-                            const files = fList;
-                            const formData = new FormData();
-                            for (let i = 0; i < files.length; i++) {
-                                formData.append('files', files[i])
-                            }
-                        
-                            formData.append('desc', 'The file has been uploaded');
-                        
-                            console.log(formData.get('desc'))
-                        
-                            fetch('/send-form', {
-                                method: 'POST',
-                                body: formData,
-                              }).then((response) => {
-                                console.log(response)
-                              })
-                        });
- // `files` is an Array!
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const files = fList;
+  const formData = new FormData();
+  for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i])
+  }
 
+  formData.append('desc', 'The file has been uploaded');
 
- // You can pass in a DOM node or a selector string!
- dragDrop('#dropTarget', (files, pos, fileList, directories) => {
-   console.log('Here are the dropped files', files)
-   console.log('Dropped at coordinates', pos.x, pos.y)
-   console.log('Here is the raw FileList object if you need it:', fileList)
-   console.log('Here is the list of directories:', directories)
- 
-   // `files` is an Array!
-   files.forEach(file => {
-     console.log(file.name)
-     console.log(file.size)
-     console.log(file.type)
-     console.log(file.lastModifiedDate)
-     console.log(file.fullPath) // not real full path due to browser security restrictions
-     console.log(file.path) // in Electron, this contains the actual full path
- 
-     // convert the file to a Buffer that we can use!
-     const reader = new FileReader()
-     reader.addEventListener('load', e => {
-       // e.target.result is an ArrayBuffer
-       const arr = new Uint8Array(e.target.result)
-       const buffer = new Buffer(arr)
- 
-       // do something with the buffer!
-     })
-     reader.addEventListener('error', err => {
-       console.error('FileReader error' + err)
-     })
-     reader.readAsArrayBuffer(file)
-   })
- })
+  console.log(formData.get('desc'))
+
+  fetch('/filelist', {
+      method: 'POST',
+      body: formData,
+    }).then((response) => {
+      console.log(response)
+    })
+});                       

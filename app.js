@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const multer = require('multer');
 const mime = require('mime-types');
-const port = 5000;
+const port = 3000;
 
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
@@ -26,6 +26,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/filelist',(req,res)=>{
+    var filelist = req.query.files
+    postData = filelist
+    console.log(postData);
     res.sendFile(__dirname + '/filelist.html');
 })
 
